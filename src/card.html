@@ -1,17 +1,17 @@
 <template>
-    <require from="bootstrap/css/bootstrap.css"></require>
-    <div class="well well-lg">
-        <form role="form" submit.trigger="submit(cardTitle,description)">
+	<require from="bootstrap/css/bootstrap.css"></require>
+	<div class="well well-lg">
+		<form role="form" submit.trigger="submit(cardTitle,description)">
 
-            <div class="form-group">
-                <label for="fn" style="display:inline;">Title:</label>
-                <button ref="saveButton" type="submit" class="btn btn-primary active" style="visibility:visible;margin-bottom:5%;float:right;">Save</button>
-                <button ref="editButton" click.delegate="edit()" type="button" class="btn btn-primary active" style="visibility: hidden;margin-bottom:5%;float:right;">Edit</button>
-                <input ref="title" type="text" value.bind="cardTitle" class="form-control" id="fn" placeholder="Title">
-            </div>
-            <div class="form-group">
-                <label for="ln">Description:</label>
-                <textarea ref="desc" value.bind="description" class="form-control" rows="5" id="ln" placeholder="Description" style="resize: none;">
+			<div class="form-group">
+				<label for="fn" style="display:inline;">Title:</label>
+				<button ref="saveButton" type="submit" class="btn btn-primary active" style="visibility:visible;margin-bottom:5%;float:right;">Save</button>
+				<button ref="editButton" click.delegate="edit()" type="button" class="btn btn-primary active" style="visibility: hidden;margin-bottom:5%;float:right;">Edit</button>
+				<input ref="title" type="text" value.bind="cardTitle" class="form-control" id="fn" placeholder="Title">
+			</div>
+			<div class="form-group">
+				<label for="ln">Description:</label>
+				<textarea ref="desc" value.bind="description" class="form-control" rows="5" id="ln" placeholder="Description" style="resize: none;">
             </div>
             
         </form>

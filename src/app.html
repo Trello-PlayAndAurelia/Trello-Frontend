@@ -1,16 +1,9 @@
 <template>
-    <require from="./list"></require>
-    <div class="page-header">
-        <h1>${heading}</h1>
-    </div>
-    <compose view-model="login"></compose>
-    <button click.delegate="newList()" type="button" class="btn btn-primary active" style="margin-left:1%">New List</button>
-    <div>
-        <ul style="list-style-type: none;">
-            <li repeat.for="list of lists" style="list-style-type: none; width:25%; float:left; display: inline;">
-                <compose view-model="list"></compose>
-            </li>
-        </ul>
-    </div>
-
+	<div class="container">
+		<div class="jumbotron">
+			<h1 align="center">${heading}</h1>
+		</div>
+	</div>
+	<compose view-model="login"></compose>
+	<compose view-model="board"></compose>
 </template>

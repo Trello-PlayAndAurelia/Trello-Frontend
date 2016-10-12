@@ -1,8 +1,8 @@
 <template>
     <require from="./card"></require>
-    <div class="well well-lg">
+    <div class="well">
         <div>
-            <h1 style="display:inline;">${listTitle}</h1>
+            <h1 style="display:inline;" contenteditable="true" >${listTitle}</h1>
             <button click.delegate="newCard()" type="button" class="btn btn-primary active" style="float:right;">New Card</button>
         </div>
         <div>
