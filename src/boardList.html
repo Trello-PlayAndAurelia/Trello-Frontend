@@ -1,0 +1,15 @@
+<template>
+	<require from='./resources/main.css'></require>
+	<require from="./board"></require>
+	<div class="page-header">
+		<h1 align="left">${title}</h1>
+	</div>
+	<button click.delegate="newBoard()" type="button" class="btn btn-primary active" style="margin-left:1%">New Board</button>
+	<div>
+		<ul style="list-style-type: none;">
+			<li repeat.for="board of boards" style="list-style-type: none; float:left; display: inline; width:10%;">
+                <a href=${board.url} class="btn btn-primary btn-lg">${board.boardName}</a>
+			</li>
+		</ul>
+	</div>
+</template>

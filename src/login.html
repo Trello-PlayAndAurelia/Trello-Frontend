@@ -1,26 +1,17 @@
 <template>
-	<button ref="loginButton" type="button" class="btn btn-success" style="position:absolute;top:0;right:0;margin:1%;visibility:visible;"
-		data-toggle="modal" data-target="#loginModal">Login</button>
-	<p ref="loginInfo" style="position:absolute;top:0;right:0;margin:1%;visibility:hidden;">Logged in as: <b>${login}</b></p>
-	<button ref="logoutButton" type="button" class="btn btn-danger" style="position:absolute;top:4%;right:0;margin:1%;visibility:hidden;"
-		click.delegate="logout()">Log out</button>
-	<div id="loginModal" class="modal fade" role="dialog" ref="modal">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Login</h4>
-				</div>
-				<div class="modal-body">
-					<label for="ln">Login:</label>
-					<input type="text" value.bind="login" class="form-control" id="ln" placeholder="Login">
-					<label for="pass">Password:</label>
-					<input type="password" value.bind="password" class="form-control required" id="pass" placeholder="Password">
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-success" data-dismiss="modal" click.delegate="loggin(login)">Login</button>
-					<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-				</div>
+	<require from='./resources/main.css'></require>
+	<div class="container">
+		<div class="col-md-6">
+			<div id="logbox">
+				<form id="signup" method="post" action="/signup">
+					<h1>account login</h1>
+					<input name="user[email]" type="email" placeholder="enter your email" class="input pass" />
+					<input name="user[password]" type="password" placeholder="enter your password" required="required" class="input pass" />
+					<input type="submit" value="Sign me in!" class="inputButton" />
+					<div class="text-center">
+						<a href="#signup" id="">create an account</a> - <a id="">forgot password</a>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>

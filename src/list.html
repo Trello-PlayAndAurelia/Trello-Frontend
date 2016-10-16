@@ -1,17 +1,18 @@
 <template>
-    <require from="./card"></require>
-    <div class="well">
-        <div>
-            <h1 style="display:inline;" contenteditable="true" >${listTitle}</h1>
-            <button click.delegate="newCard()" type="button" class="btn btn-primary active" style="float:right;">New Card</button>
-        </div>
-        <div>
-            <ul>
-                <li repeat.for="card of cards" style="list-style-type: none;">
-                    <compose view-model="card"></compose>
-                </li>
-            </ul>
-        </div>
+	<require from='./resources/main.css'></require>
+	<require from="./card"></require>
+	<div class="well">
+		<div>
+			<h1 style="display:inline;">${listTitle}</h1>
+			<button click.delegate="newCard()" type="button" class="btn btn-primary active" style="float:right;">New Card</button>
+		</div>
+		<div>
+			<ul>
+				<li repeat.for="card of cards" style="list-style-type: none;">
+					<compose view-model="card"></compose>
+				</li>
+			</ul>
+		</div>
 
-    </div>
+	</div>
 </template>
