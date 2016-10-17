@@ -1,6 +1,5 @@
 import environment from './environment';
 import 'bootstrap';
-import 'bootstrap-editable';
 //Configure Bluebird Promises.
 //Note: You may want to use environment-specific configuration.
 Promise.config({
