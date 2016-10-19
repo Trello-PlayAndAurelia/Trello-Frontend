@@ -9,6 +9,7 @@ export class List {
 
   saveListName(nameOfList){
     this.listTitle = document.getElementById("listName").innerHTML;
+    alert(this.listTitle);
   }
   
   deleteList(){
