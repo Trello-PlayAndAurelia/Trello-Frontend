@@ -4,8 +4,9 @@ export class BoardList {
   boards = [];
   title= "Board List";
 
-  newBoard() {
-      var number = this.boards.length;
-      this.boards.push(new Board(number+1));
+  newBoard(name) {
+      this.boards.push(new Board(name));
+      var text = this.newBoardModalText;
+      text.value = "";
   }
 }

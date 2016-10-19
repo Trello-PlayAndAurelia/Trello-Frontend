@@ -3,26 +3,27 @@ export class Card {
     description;
 
 
-    submit(title, description) {
-        this.cardTitle = title;
+    submit(description) {
+        this.cardTitle = document.getElementById("cardName").innerHTML;
         this.description = description;
-        var title = this.title;
         var desc = this.desc;
-        var edit = this.editButton;
-        var save = this.saveButton;
+        var edit = this.editCardButton;
+        var save = this.saveCardButton;
         edit.style.visibility = "visible";
         save.style.visibility = "hidden";
         desc.readOnly = true;
-        title.readOnly = true;
     }
-    edit(){
-        var title = this.title;
+
+    editCard(){
         var desc = this.desc;
-        var edit = this.editButton;
-        var save = this.saveButton;
+        var edit = this.editCardButton;
+        var save = this.saveCardButton;
         edit.style.visibility = "hidden";
         save.style.visibility = "visible";
         desc.readOnly = false;
-        title.readOnly = false;
+    }
+
+    deleteCard(){
+        
     }
 }

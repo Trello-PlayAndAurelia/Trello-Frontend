@@ -2,17 +2,26 @@ import { List } from './list';
 
 export class Board {
   lists = [];
-  id;
   boardName;
   url;
 
-  constructor(number) {
-    this.id = number;
-    this.boardName = 'Board ' + this.id;
-    this.url = '#board/' + this.id;
+  constructor(name) {
+    this.boardName = name;
+    this.url = '#board/' + this.boardName;
   }
 
   newList() {
     this.lists.push(new List());
   }
+
+  editBoardName(newName){
+    this.boardName = newName;
+    var text = this.editNameModal;
+    text.value = "";
+  }
+
+  deleteBoard(){
+    
+  }
+
 }

@@ -2,20 +2,21 @@
 	<require from='./resources/main.css'></require>
 	<require from="bootstrap/css/bootstrap.css"></require>
 	<div class="well well-lg">
-		<form role="form" submit.trigger="submit(cardTitle,description)">
+		<form role="form" submit.trigger="submit(description)">
 
 			<div class="form-group">
-				<label for="fn" style="display:inline;">Title:</label>
-				<button ref="saveButton" type="submit" class="btn btn-primary active" style="visibility:visible;margin-bottom:5%;float:right;">Save</button>
-				<button ref="editButton" click.delegate="edit()" type="button" class="btn btn-primary active" style="visibility: hidden;margin-bottom:5%;float:right;">Edit</button>
-				<input ref="title" type="text" value.bind="cardTitle" class="form-control" id="fn" placeholder="Title">
+				<label id="cardName" style="display:inline; font-size:20px"  contenteditable="true">Card Name</label>
+				<button ref="saveCardButton" type="submit" class="btn btn-primary active" style="visibility:visible; margin-bottom:5%; float:right;">Save</button>
+			</div>
+			<div>
+				<button ref="editCardButton" click.delegate="editCard()" type="button" class="btn btn-primary active" style="visibility: hidden; margin-bottom:5%; float:right;">Edit</button>
+				<button ref="deleteCardButton" click.delegate="deleteCard()" type="button" class="btn btn-primary active" margin-bottom:5%; float:right;">Delete</button>
 			</div>
 			<div class="form-group">
 				<label for="ln">Description:</label>
 				<textarea ref="desc" value.bind="description" class="form-control" rows="5" id="ln" placeholder="Description" style="resize: none;">
-            </div>
-            
+			</div>    
         </form>
-        
+
     </div>
 </template>

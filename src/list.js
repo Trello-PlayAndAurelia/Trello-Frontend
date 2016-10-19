@@ -6,4 +6,14 @@ export class List {
   newCard() {
     this.cards.push(new Card());
   }
+
+  saveListName(nameOfList){
+    this.listTitle = document.getElementById("listName").innerHTML;
+  }
+  
+  deleteList(){
+    
+  }
+
+
 }

@@ -3,8 +3,8 @@
 	<require from="./card"></require>
 	<div class="well">
 		<div>
-			<h1 style="display:inline;">${listTitle}</h1>
-			<button click.delegate="newCard()" type="button" class="btn btn-primary active" style="float:right;">New Card</button>
+			<label id="listName" style="display:inline; font-size:25px" contenteditable="true">List Name</label>
+			<button click.delegate="saveListName()" type="button" class="btn btn-primary active" style="float:right;">Save</button>
 		</div>
 		<div>
 			<ul>
@@ -13,6 +13,8 @@
 				</li>
 			</ul>
 		</div>
+		<button click.delegate="newCard()" type="button" class="btn btn-primary active" style="float:right;">New Card</button>
+		<button click.delegate="deleteList()" type="button" class="btn btn-primary active" style="float:left;">Delete list</button>
 
 	</div>
 </template>
