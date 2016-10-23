@@ -6,8 +6,13 @@ export class Login {
   email;
   password;
 
+
   constructor(http) {
     this.http = http;
+    this.http.configure(config => {
+      config
+        .useStandardConfiguration();
+    });
   }
 
   login(email, password) {
@@ -17,17 +22,13 @@ export class Login {
       email: this.email,
       password: this.password
     };
-    this.http.fetch('http://localhost:9000/login', {
-      method: 'post',
-      body: json(credentials)
-    }).then(response => response.json())
-      .then(credentials => {
-        alert(credentials.msg);
-      })
-      .catch(error => {
-        alert('Error saving user!');
+    client.fetch('http://localhost:9000/users')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data.name);
       });
   }
+
 
   logout() {
     this.login = "";
