@@ -22,7 +22,7 @@ export class Login {
       email: this.email,
       password: this.password
     };
-    client.fetch('http://localhost:9000/users')
+    this.http.fetch('http://localhost:9000/users')
       .then(response => response.json())
       .then(data => {
         console.log(data.name);
