@@ -26,7 +26,7 @@ export class Login {
     this.http.fetch('http://localhost:9000/login',{
        method:"Post",
        mode:"no-cors",
-       body:json(credentials),
+       body:JSON.stringify(credentials),
        headers:{
          "Content-Type":"application/json",
          "Access-Control-Allow-Origin": "*"
