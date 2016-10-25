@@ -9,10 +9,10 @@ export class Login {
 
   constructor(http) {
     this.http = http;
-    this.http.configure(config => {
-      config
-        .useStandardConfiguration();
-    });
+    // this.http.configure(config => {
+    //   config
+    //     .useStandardConfiguration();
+    // });
   }
 
   login(email, password) {
@@ -22,12 +22,21 @@ export class Login {
       email: this.email,
       password: this.password
     };
-    client.fetch('http://localhost:9000/users')
-      .then(response => response.json())
-      .then(data => {
-        console.log(data.name);
-      });
-  }
+    alert(credentials.email + " " + credentials.password);
+    this.http.fetch('http://localhost:9000/login',{
+       method:"Post",
+       mode:"no-cors",
+       body:json(credentials),
+       headers:{
+         "Content-Type":"application/json",
+         "Access-Control-Allow-Origin": "*"
+       }
+    })
+      .then(response =>{
+        alert(response);
+      })
+
+ }
 
 
   logout() {

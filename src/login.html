@@ -3,11 +3,11 @@
 	<div class="container">
 		<div class="col-md-6">
 			<div id="logbox">
-				<form id="signup" method="post" submit.trigger="login(email,password)">
+				<form id="signup" >
 					<h1>account login</h1>
 					<input value.bind="email" name="email" type="email" placeholder="enter your email" class="input pass" />
 					<input value.bind="password" name="password" type="password" placeholder="enter your password" required="required" class="input pass" />
-					<input type="submit" value="Sign me in!" class="inputButton" />
+					<a class="btn btn-default"  class="inputButton"  click.delegate="login(email,password)">Sign me in!</a>
 					<div class="text-center">
 						<a href="#signup" id="">create an account</a> - <a id="">forgot password</a>
 					</div>

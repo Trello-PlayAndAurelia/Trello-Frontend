@@ -107,6 +107,9 @@
               "css/bootstrap.css"
             ]
           },
+          "extend",
+          "aurelia-fetch-client",
+          "aurelia-api",
           "aurelia-binding",
           "aurelia-bootstrapper",
           "aurelia-dependency-injection",
