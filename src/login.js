@@ -1,20 +1,19 @@
 import { inject } from 'aurelia-framework';
 import { HttpClient, json } from 'aurelia-fetch-client';
-  
-let httpClient = new HttpClient();
 
+@inject(HttpClient)
 export class Login {
   email;
   password;
 
 
-  // constructor(http) {
-  //   this.http = http;
+  constructor(http) {
+    this.http = http;
     // this.http.configure(config => {
     //   config
     //     .useStandardConfiguration();
     // });
-  // }
+  }
 
   login(email, password) {
     this.email = email;
@@ -23,8 +22,9 @@ export class Login {
       email: this.email,
       password: this.password
     };
-    httpClient.fetch('http://localhost:9000/login',{
-       method:"POST",
+    alert(credentials.email + " " + credentials.password);
+    this.http.fetch('http://localhost:9000/login',{
+       method:"Post",
        mode:"no-cors",
        body:JSON.stringify(credentials),
        headers:{
