@@ -5,7 +5,7 @@ import { HttpClient, json } from 'aurelia-fetch-client';
 export class Login {
   email;
   password;
-
+  user;
 
   constructor(http) {
     this.http = http;
@@ -18,25 +18,22 @@ export class Login {
   login(email, password) {
     this.email = email;
     this.password = password;
-    let credentials = {
-      email: this.email,
-      password: this.password
-    };
-    alert(credentials.email + " " + credentials.password);
-    this.http.fetch('http://localhost:9000/login',{
-       method:"Post",
-       mode:"no-cors",
-       body:JSON.stringify(credentials),
-       headers:{
-         "Content-Type": "application/json",
-         "Access-Control-Allow-Origin": "*"
-       }
+    //let credentials = '[{"id": 1,"name": "AdamPiech","email": "adampiech7@op.pl"},{"id": 2,"name": "User","email": "user@user.pl"},{"id": 3,"name": "JamesBond","email": "jamesbond007@gmail.com"}]';
+    this.http.fetch('http://localhost:9000/login', {
+      method: "Get",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      }
     })
-      .then(response =>{
-        alert(response);
+      .then(response => {
+        this.user = JSON.parse(response);
       })
+      
+      alert('Logged in as: ' + this.user[1].name);
 
- }
+  }
 
 
   logout() {
