@@ -34,8 +34,7 @@ export class Login {
       alert('Logged in as: ' + this.user[1].name);
 
   }
-
-
+  
   logout() {
     this.login = "";
     this.password = "";

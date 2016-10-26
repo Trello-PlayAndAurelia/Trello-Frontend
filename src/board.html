@@ -4,10 +4,35 @@
 	<div class="page-header">
 		<h1 align="left">${boardName}</h1>
 	</div>
-	<button click.delegate="newList()" type="button" class="btn btn-primary active" style="margin-left:1%">New List</button>
+
+	<button click.delegate="newList()" type="button" class="btn btn-primary active" style="margin-left:5px">New List</button>
+	<button type="button" class="btn btn-primary active" data-toggle="modal" data-target="#editNameModal" style="margin-left: 5px">Edit board name</button>
+	<button click.delegate="deleteBoard()" type="button" class="btn btn-primary active" style="margin-left:5px; margin-right: 5px">Delete board</button>
+	<button id="likeButton" click.delegate="likeBoard()" type="button" value="1" class="btn btn-primary active"><img id="likeImage" src = src/resources/img/star.png></button>
+	
+	<div class="modal fade" id="editNameModal" tabindex="-1" role="dialog" aria-labelledby="editNameLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          				<span aria-hidden="true">&times;</span>
+        			</button>
+					<h4 class="modal-title" id="editNameLabel">Enter new name of board</h4>
+				</div>
+				<div class="modal-body">
+					<input ref="editNameModal" type="text" class="form-control" value.bind="newName">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" click.delegate="editBoardName(newName)" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 	<div>
-		<ul style="list-style-type: none;">
-			<li repeat.for="list of lists" style="list-style-type: none; width:25%; float:left; display: inline;">
+		<ul style="">
+			<li repeat.for="list of lists" style="width: 24%; margin-right: 10px; border-radius: 10px; float:left; display: inline; background-color: #8d8b8b">
 				<compose view-model="list"></compose>
 			</li>
 		</ul>

@@ -2,13 +2,41 @@
 	<require from='./resources/main.css'></require>
 	<require from="./board"></require>
 	<div class="page-header">
-		<h1 align="left">${title}</h1>
+		<h1 align="left" style="display:inline">${title}</h1>
+		
+			<div class="input-group", style="width:30%;">
+				<input type="text" class="form-control" placeholder="Search for boards" value.bind="searchText" >
+				<span class="input-group-btn">
+        <button class="btn btn-default" type="button" click.delegate="boardSearch(searchText)" >Search</button>
+      </span>
+			</div>
 	</div>
-	<button click.delegate="newBoard()" type="button" class="btn btn-primary active" style="margin-left:1%">New Board</button>
+	<button type="button" class="btn btn-primary active" data-toggle="modal" data-target="#newBoardModal" style="margin-left:1%">New Board</button>
+	
+	<div class="modal fade" id="newBoardModal" tabindex="-1" role="dialog" aria-labelledby="newBoardModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          				<span aria-hidden="true">&times;</span>
+        			</button>
+					<h4 class="modal-title" id="newBoardModalLabel">Enter the name of board</h4>
+				</div>
+				<div class="modal-body">
+					<input ref="newBoardModalText" type="text" value="" class="form-control" value.bind="nameOfNewBoard">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" click.delegate="newBoard(nameOfNewBoard)" class="btn btn-primary" data-dismiss="modal">Save</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 	<div>
 		<ul style="list-style-type: none;">
-			<li repeat.for="board of boards" style="list-style-type: none; float:left; display: inline; width:10%;">
-                <a href=${board.url} class="btn btn-primary btn-lg">${board.boardName}</a>
+			<li repeat.for="board of boards" style="list-style-type: none; float:left; display: inline; padding:5px">
+				<a href=${board.url} class="btn btn-primary btn-lg">${board.boardName}</a>
 			</li>
 		</ul>
 	</div>
