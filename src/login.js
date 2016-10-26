@@ -1,16 +1,44 @@
+import { inject } from 'aurelia-framework';
+import { HttpClient, json } from 'aurelia-fetch-client';
+
+@inject(HttpClient)
 export class Login {
-  login;
+  email;
   password;
 
-  loggin(login) {
-    this.login = login;
-    var button = this.loginButton;
-    var logout = this.logoutButton;
-    var text = this.loginInfo;
-    button.style.visibility = "hidden";
-    text.style.visibility = "visible";
-    logout.style.visibility = "visible";
+
+  constructor(http) {
+    this.http = http;
+    // this.http.configure(config => {
+    //   config
+    //     .useStandardConfiguration();
+    // });
   }
+
+  login(email, password) {
+    this.email = email;
+    this.password = password;
+    let credentials = {
+      email: this.email,
+      password: this.password
+    };
+    alert(credentials.email + " " + credentials.password);
+    this.http.fetch('http://localhost:9000/login',{
+       method:"Post",
+       mode:"no-cors",
+       body:json(credentials),
+       headers:{
+         "Content-Type":"application/json",
+         "Access-Control-Allow-Origin": "*"
+       }
+    })
+      .then(response =>{
+        alert(response);
+      })
+
+ }
+
+
   logout() {
     this.login = "";
     this.password = "";

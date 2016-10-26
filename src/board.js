@@ -20,6 +20,17 @@ export class Board {
     text.value = "";
   }
 
+  likeBoard(){
+    if(document.getElementById("likeButton").value == 1)
+    {
+      document.getElementById("likeButton").value = 0;
+      document.getElementById("likeImage").src = "src/resources/img/star2.png";
+    } else{
+      document.getElementById("likeButton").value = 1;
+      document.getElementById("likeImage").src = "src/resources/img/star.png";
+    }
+  }
+
   deleteBoard(){
     
   }
