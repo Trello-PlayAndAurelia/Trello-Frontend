@@ -22,7 +22,7 @@ export class BoardList {
 
 
       for (var index = 0; index < this.boards.length; index++) {
-        if (this.boards[index].boardName === this.searchText) {
+        if (this.boards[index].boardName.indexOf(this.searchText) !== -1) {
           filtered.push(this.boards[index]);
         }
       }
