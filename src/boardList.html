@@ -2,7 +2,14 @@
 	<require from='./resources/main.css'></require>
 	<require from="./board"></require>
 	<div class="page-header">
-		<h1 align="left">${title}</h1>
+		<h1 align="left" style="display:inline">${title}</h1>
+		
+			<div class="input-group", style="width:30%;">
+				<input type="text" class="form-control" placeholder="Search for boards" value.bind="searchText" >
+				<span class="input-group-btn">
+        <button class="btn btn-default" type="button" click.delegate="boardSearch(searchText)" >Search</button>
+      </span>
+			</div>
 	</div>
 	<button type="button" class="btn btn-primary active" data-toggle="modal" data-target="#newBoardModal" style="margin-left:1%">New Board</button>
 	
