@@ -19,7 +19,7 @@ export class Login {
     this.email = email;
     this.password = password;
     //let credentials = '[{"id": 1,"name": "AdamPiech","email": "adampiech7@op.pl"},{"id": 2,"name": "User","email": "user@user.pl"},{"id": 3,"name": "JamesBond","email": "jamesbond007@gmail.com"}]';
-    this.http.fetch('http://localhost:9000/login', {
+    this.http.fetch('http://localhost:9000/users', {
       method: "Get",
       mode: "no-cors",
       headers: {
