@@ -1,16 +1,38 @@
 import { Board } from './board';
+import $ from 'jquery';
+import jQuery from 'jquery';
 
 export class BoardList {
   boards = [];
-  title= "Board List";
+  title = "Board List";
   searchText;
   backup = [];
 
-  newBoard(name) {
-      this.boards.push(new Board(name));
-      var text = this.newBoardModalText;
-      text.value = "";
+
+
+  newBoard(boardName) {
+    let boardInfo = { name: boardName };
+    $.ajax({
+      type: "POST",
+      contentType: "application/json; charset=utf-8",
+      url: "http://localhost:9000/boards",
+      data: JSON.stringify(boardInfo),
+      dataType: "json",
+      success: function (data) {
+        alert(data.success.message);
+        this.boards = [];
+
+      }, error: function (xhr, ajaxOptions, thrownError) {
+        var json = JSON.parse(xhr.responseText)
+        alert(json.error.message);
+      }
+    });
+            this.boards.push(new Board(boardName));
+    var text = this.newBoardModalText;
+    text.value = "";
   }
+
+
   boardSearch(searchText) {
     this.searchText = searchText;
     let filtered = [];
