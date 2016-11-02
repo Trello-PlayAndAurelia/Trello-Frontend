@@ -1,40 +1,34 @@
-import { inject } from 'aurelia-framework';
-import { HttpClient, json } from 'aurelia-fetch-client';
+import $ from 'jquery';
+import jQuery from 'jquery';
 
-@inject(HttpClient)
 export class Login {
   email;
   password;
   user;
 
-  constructor(http) {
-    this.http = http;
-    // this.http.configure(config => {
-    //   config
-    //     .useStandardConfiguration();
-    // });
-  }
 
   login(email, password) {
     this.email = email;
     this.password = password;
-    //let credentials = '[{"id": 1,"name": "AdamPiech","email": "adampiech7@op.pl"},{"id": 2,"name": "User","email": "user@user.pl"},{"id": 3,"name": "JamesBond","email": "jamesbond007@gmail.com"}]';
-    this.http.fetch('http://localhost:9000/users', {
-      method: "Get",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*"
+    let credentials = { email: this.email, password: this.password };
+
+    $.ajax({
+      type: "POST",
+      contentType: "application/json; charset=utf-8",
+      url: "http://localhost:9000/login",
+      crossDomain: true,
+      data: JSON.stringify(credentials),
+      dataType: "json",
+      success: function (data) {
+        alert(data.success.message + ' as ' + data.success.user.name);
+      }, error: function (xhr, ajaxOptions, thrownError) {
+        var json = JSON.parse(xhr.responseText)
+        alert(json.error.message);
       }
-    })
-      .then(response => {
-        this.user = JSON.parse(response);
-      })
-      
-      alert('Logged in as: ' + this.user[1].name);
+    });
 
   }
-  
+
   logout() {
     this.login = "";
     this.password = "";
