@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import jQuery from 'jquery';
+import { log } from "./log";
 
 export class Login {
   email;
@@ -16,11 +17,12 @@ export class Login {
       type: "POST",
       contentType: "application/json; charset=utf-8",
       url: "http://localhost:9000/login",
-      crossDomain: true,
       data: JSON.stringify(credentials),
       dataType: "json",
       success: function (data) {
+        log.debug(data.success.message + ' as ' + data.success.user.name);
         alert(data.success.message + ' as ' + data.success.user.name);
+
       }, error: function (xhr, ajaxOptions, thrownError) {
         var json = JSON.parse(xhr.responseText)
         alert(json.error.message);

@@ -27,7 +27,7 @@ export class BoardList {
         alert(json.error.message);
       }
     });
-            this.boards.push(new Board(boardName));
+    this.boards.push(new Board(boardName));
     var text = this.newBoardModalText;
     text.value = "";
   }
