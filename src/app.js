@@ -2,6 +2,7 @@ import { Board } from './board';
 
 export class App {
   heading = "Trello";
+
   configureRouter(config, router) {
     config.title = 'Trello';
     config.map([

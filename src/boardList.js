@@ -1,12 +1,34 @@
 import { Board } from './board';
 import $ from 'jquery';
 import jQuery from 'jquery';
+import { log } from "./log";
+import Variable from "./var";
 
 export class BoardList {
   boards = [];
   title = "Board List";
   searchText;
   backup = [];
+
+  constructor() {
+    Variable.boards = [];
+    $.ajax({
+      type: "GET",
+      contentType: "application/json; charset=utf-8",
+      url: "http://localhost:9000/boards/all",
+      dataType: "json",
+      success: function (data) {
+        data.forEach(function (value) {
+          Variable.boards.push(new Board(value.name));
+          //log.debug("created " + value.name);
+        });
+      }, error: function (xhr, ajaxOptions, thrownError) {
+        var json = JSON.parse(xhr.responseText)
+        alert(json.error.message);
+      }
+    });
+    this.boards = Variable.boards;
+  }
 
 
 
