@@ -8,10 +8,10 @@ export class Board {
   boardName;
   url;
 
-  constructor(name,id) {
-    if ( name != null) {
+  constructor(name, id) {
+    if (name != null) {
       log.debug(id);
-      this.boardID=id;
+      this.boardID = id;
       this.boardName = name;
       Variable.boardName = name;
       this.url = '#board/' + this.boardName;
@@ -27,9 +27,12 @@ export class Board {
       success: function (data) {
         data.forEach(function (value) {
           if (name.boardId === value.name) {
-            value.lists.forEach(function (board) {
+            for (var i = 0; i < value.lists.length; i++) {
               Variable.lists.push(new List());
-            });
+            }
+            // value.lists.forEach(function (board) {
+            //   Variable.lists.push(new List());
+            // });
           }
         });
       }, error: function (xhr, ajaxOptions, thrownError) {
@@ -46,7 +49,6 @@ export class Board {
 
 
   newList() {
-    alert(this.boardID);
     this.lists.push(new List());
   }
 

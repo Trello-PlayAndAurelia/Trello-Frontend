@@ -1,5 +1,5 @@
 export class Card {
-    cardTitle;
+    cardTitle = "Card";
     description;
 
 
@@ -28,6 +28,7 @@ export class Card {
     inputCardArea2.style.display = "inline";
     editCardBt2.style.display = "none";
     saveCardBt2.style.display = "inline";
+    inputCardArea2.value=this.cardTitle;
     var desc2 = this.desc;
     desc2.readOnly = false;
   }

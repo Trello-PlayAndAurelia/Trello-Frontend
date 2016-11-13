@@ -3,14 +3,14 @@
 	<require from="bootstrap/css/bootstrap.css"></require>
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<label id="cardName" value.bind="cardTitle" ref="cardNameLabel" style="display:inline; font-size:20px; display: none;">${cardTitle}</label>
-			<input  ref="inputCardNameArea" type="text" name="cardNameField" placeholder="Card Name" value.bind="nameCard" style="font-size: 20px; width: 120px; display: inline; border-radius: 7px">
-			<button click.delegate="saveCardName(nameCard, description)" ref="saveCardButton" type="button" class="btn btn-primary active" style="float:right; margin-top: 5px; margin-right: 5px; display: inline;">Save</button>
-			<button click.delegate="editCardName()" ref="editCardButton" type="button" class="btn btn-primary active" style="float:right; margin-top: 5px; margin-right: 5px; display: none;">Edit</button>
+			<label id="cardName" value.bind="cardTitle" ref="cardNameLabel" style="display:inline; font-size:20px; display: inline;">${cardTitle}</label>
+			<input  ref="inputCardNameArea" type="text" name="cardNameField" class="form-control" placeholder="Card Name" value.bind="nameCard" style="font-size: 20px; width: 150px; display: none;">
+			<button click.delegate="saveCardName(nameCard, description)" ref="saveCardButton" type="button" class="btn btn-primary active" style="float:right; margin-top: 5px; margin-right: 5px; display: none;">Save</button>
+			<button click.delegate="editCardName()" ref="editCardButton" type="button" class="btn btn-primary active" style="float:right; margin-top: 5px; margin-right: 5px; display: inline;">Edit</button>
 		</div>
 		<div class="panel-body">
 			<label style="margin-top: 7px; margin-left: 10px">Description:</label>
-			<textarea ref="desc" value.bind="description" rows="5" id="ln" placeholder="Description" style="resize: none; width: 90%; margin-left: 15px; border-radius: 7px"></textarea>
+			<textarea ref="desc" class="form-control" value.bind="description" rows="5" id="ln" placeholder="Description" style="resize: none; width: 90%; margin-left: 15px;"></textarea>
 		</div>
 		<div class="panel-footer">
 			<button click.delegate="deleteCard()" type="button" class="btn btn-primary active" style=" margin-bottom: 5px; margin-right: 5px">Delete</button>

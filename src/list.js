@@ -28,6 +28,7 @@ export class List {
     var saveListBt2 = this.saveListButton;
     listLabel2.style.display = "none";
     inputListArea2.style.display = "inline";
+    inputListArea2.value=this.listTitle;
     editListBt2.style.display = "none";
     saveListBt2.style.display = "inline";
   }
