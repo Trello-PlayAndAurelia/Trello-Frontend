@@ -6,7 +6,8 @@ export class App {
   configureRouter(config, router) {
     config.title = 'Trello';
     config.map([
-      { route: ['', 'home'], name: 'boardList', moduleId: 'boardList', nav: true, title: 'Boards' },
+      { route: ['', 'home'], name: 'welcome', moduleId: 'welcome', title: 'Welcome' },
+      { route: ['boards'], name: 'boardList', moduleId: 'boardList', nav: true, title: 'Boards' },
       { route: ['board/:boardId'], name: 'board', moduleId: 'board',  title: 'Board', href: 'board/0',},
       { route: ['login'], name: 'login', moduleId: 'login', title: 'Login' },
       { route: ['signup'], name: 'signup', moduleId: 'signup', title: 'Signup' }

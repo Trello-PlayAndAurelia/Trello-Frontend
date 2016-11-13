@@ -3,20 +3,22 @@ import Variable from "./var";
 import { log } from "./log";
 
 export class Board {
+  boardID;
   lists = [];
   boardName;
   url;
 
-  constructor(name) {
-
-    
-
-
-    this.boardName = name;
-    this.url = '#board/' + this.boardName;
+  constructor(name,id) {
+    if ( name != null) {
+      log.debug(id);
+      this.boardID=id;
+      this.boardName = name;
+      Variable.boardName = name;
+      this.url = '#board/' + this.boardName;
+    }
   }
 
-  activate(name){
+  activate(name) {
     $.ajax({
       type: "GET",
       contentType: "application/json; charset=utf-8",
@@ -44,6 +46,7 @@ export class Board {
 
 
   newList() {
+    alert(this.boardID);
     this.lists.push(new List());
   }
 

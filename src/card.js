@@ -10,11 +10,11 @@ export class Card {
     var saveCardBt = this.saveCardButton;
     var desc = this.desc;
     cardLabel.style.display = "inline";
+    cardLabel.value = nameCard;
     inputCardArea.style.display = "none";
     saveCardBt.style.display = "none";
     editCardBt.style.display = "inline";
     this.cardTitle = nameCard;
-    document.getElementById('cardName').innerHTML = nameCard;
     this.description = description;
     desc.readOnly = true;
   }

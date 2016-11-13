@@ -19,8 +19,7 @@ export class BoardList {
       dataType: "json",
       success: function (data) {
         data.forEach(function (value) {
-          Variable.boards.push(new Board(value.name));
-          //log.debug("created " + value.name);
+          Variable.boards.push(new Board(value.name, value.id));
         });
       }, error: function (xhr, ajaxOptions, thrownError) {
         var json = JSON.parse(xhr.responseText)
@@ -62,9 +61,6 @@ export class BoardList {
       this.backup = this.boards;
     }
     if (this.searchText) {
-
-
-
       for (var index = 0; index < this.boards.length; index++) {
         if (this.boards[index].boardName.indexOf(this.searchText) !== -1) {
           filtered.push(this.boards[index]);

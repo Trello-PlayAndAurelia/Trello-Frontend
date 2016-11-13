@@ -19,7 +19,6 @@ export class List {
     saveListBt.style.display = "none";
     editListBt.style.display = "inline";
     this.listTitle = nameList;
-    document.getElementById('listName').innerHTML = nameList;
   }
 
   editListName(){

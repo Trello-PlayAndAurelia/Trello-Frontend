@@ -1,21 +1,19 @@
 <template>
 	<require from='./resources/main.css'></require>
 	<require from="bootstrap/css/bootstrap.css"></require>
-	<div>
-		<div>
-			<label id="cardName" ref="cardNameLabel" style="display:inline; font-size:20px; margin-top: 5px; margin-left: 5px; display: none;">Card Name</label>
-			<input  ref="inputCardNameArea" type="text" name="cardNameField" placeholder="Card Name" value.bind="nameCard" style="font-size: 20px; width: 120px; margin-top: 5px; margin-left: 5px; display: inline; border-radius: 7px">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<label id="cardName" value.bind="cardTitle" ref="cardNameLabel" style="display:inline; font-size:20px; display: none;">${cardTitle}</label>
+			<input  ref="inputCardNameArea" type="text" name="cardNameField" placeholder="Card Name" value.bind="nameCard" style="font-size: 20px; width: 120px; display: inline; border-radius: 7px">
 			<button click.delegate="saveCardName(nameCard, description)" ref="saveCardButton" type="button" class="btn btn-primary active" style="float:right; margin-top: 5px; margin-right: 5px; display: inline;">Save</button>
 			<button click.delegate="editCardName()" ref="editCardButton" type="button" class="btn btn-primary active" style="float:right; margin-top: 5px; margin-right: 5px; display: none;">Edit</button>
 		</div>
-		<div>
+		<div class="panel-body">
 			<label style="margin-top: 7px; margin-left: 10px">Description:</label>
-		</div>
-		<div>
 			<textarea ref="desc" value.bind="description" rows="5" id="ln" placeholder="Description" style="resize: none; width: 90%; margin-left: 15px; border-radius: 7px"></textarea>
 		</div>
-		<div>
-			<button click.delegate="deleteCard()" type="button" class="btn btn-primary active" style="float:right; margin-bottom: 5px; margin-right: 5px">Delete</button>
+		<div class="panel-footer">
+			<button click.delegate="deleteCard()" type="button" class="btn btn-primary active" style=" margin-bottom: 5px; margin-right: 5px">Delete</button>
 		</div>
     </div>
 </template>
