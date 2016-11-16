@@ -2,8 +2,10 @@ export class Variable{
     constructor(){
         this.boards = [];
         this.lists = [];
+        this.cardList=[];
         this.boardName = "";
+        this.listTitle;
     }
 }
 
-export default(new Variable);
+export {Variable as default};

@@ -1,5 +1,5 @@
 import { List } from './list';
-import Variable from "./var";
+import { Variable } from "./var";
 import { log } from "./log";
 
 export class Board {
@@ -7,48 +7,59 @@ export class Board {
   lists = [];
   boardName;
   url;
+  favourite;
 
   constructor(name, id) {
-    if (name != null) {
-      log.debug(id);
-      this.boardID = id;
-      this.boardName = name;
-      Variable.boardName = name;
-      this.url = '#board/' + this.boardName;
-    }
+    this.boardID = id;
+    this.boardName = name;
+    this.url = '#board/' + this.boardID;
+  }
+
+  attached() {
+    this.boardName = Variable.boardName;
+    Variable.boardName = "";
   }
 
   activate(name) {
+    Variable.lists = [];
+
     $.ajax({
       type: "GET",
       contentType: "application/json; charset=utf-8",
-      url: "http://localhost:9000/boards/all",
+      url: "http://localhost:9000/boards?id=" + name.boardId,
       dataType: "json",
       success: function (data) {
-        data.forEach(function (value) {
-          if (name.boardId === value.name) {
-            for (var i = 0; i < value.lists.length; i++) {
-              Variable.lists.push(new List());
-            }
-            // value.lists.forEach(function (board) {
-            //   Variable.lists.push(new List());
-            // });
-          }
-        });
+        Variable.boardName = data.name;
+        for (var i = 0; i < data.lists.length; i++) {
+          Variable.lists.push(new List(data.lists[i]));
+        }
       }, error: function (xhr, ajaxOptions, thrownError) {
         var json = JSON.parse(xhr.responseText)
         alert(json.error.message);
       }
     });
     this.lists = Variable.lists;
-    Variable.lists = [];
-    this.boardName = name.boardId;
+    this.boardID=name.boardId;
   }
 
 
 
 
   newList() {
+    let listName = { name: 'List' };
+    $.ajax({
+      type: "POST",
+      contentType: "application/json; charset=utf-8",
+      url: "http://localhost:9000/lists?boardId="+this.boardID,
+      data: JSON.stringify(listName),
+      dataType: "json",
+      success: function (data) {
+        alert(data.success.message);
+      }, error: function (xhr, ajaxOptions, thrownError) {
+        var json = JSON.parse(xhr.responseText)
+        alert(json.error.message);
+      }
+    });
     this.lists.push(new List());
   }
 
@@ -62,9 +73,12 @@ export class Board {
     if (document.getElementById("likeButton").value == 1) {
       document.getElementById("likeButton").value = 0;
       document.getElementById("likeImage").src = "src/resources/img/star2.png";
+      this.favourite = true;
+
     } else {
       document.getElementById("likeButton").value = 1;
       document.getElementById("likeImage").src = "src/resources/img/star.png";
+      this.favourite = false;
     }
   }
 
